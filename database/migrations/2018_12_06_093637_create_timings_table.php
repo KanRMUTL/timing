@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateTimingsTable extends Migration
 {
@@ -15,6 +15,9 @@ class CreateTimingsTable extends Migration
     {
         Schema::create('timings', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('user_id');
+            $table->datetime('start');
+            $table->datetime('end');
             $table->timestamps();
         });
     }
