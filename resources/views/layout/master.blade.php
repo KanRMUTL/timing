@@ -11,7 +11,7 @@
 <body>
     <div class="container">
             <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                    <a class="navbar-brand" href="#">Navbar</a>
+                    <a class="navbar-brand" href="#">[ระบบลงเวลาฝึกงาน]</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
                     </button>
@@ -22,13 +22,21 @@
                           <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                         </li>
 
+                        @if(!auth()->check())
                         <li class="nav-item">
-                          <a class="nav-link active hover" href="/timing/create">ลงเวลา</a>
+                            <a class="nav-link active hover" href="/login">Login</a>
                         </li>
-
-                            <li class="nav-item">
-                                <a class="nav-link active hover" href="/login">Login</a>
+                        <li class="nav-item">
+                            <a class="nav-link active hover" href="/register">Register</a>
+                        </li>
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link active hover" href="/timing/create">ลงเวลา</a>
+                        </li>
+                        <li class="nav-item">
+                                <a class="nav-link active hover" href="/logout">Logout</a>
                             </li>
+                        @endif
                     </div>
                   </nav>
     </div>

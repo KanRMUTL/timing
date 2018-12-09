@@ -8,13 +8,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $in = Timing::where('in_out',0)->get();
-        $out = Timing::where('in_out',1)->get();
+        $timings = Timing::get();
 
 
         $data = [
-            'in' => $in,
-            'out' => $out
+            'timings' => $timings
         ];
 
         return view('welcome', $data);

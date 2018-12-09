@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
-
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -68,6 +68,19 @@ class RegisterController extends Controller
             'email' => $data['email'],
             'user_type_id' => 2,
             'password' => Hash::make($data['password']),
+        ]);
+    }
+
+    protected function showRegistrationForm(){
+        return view('register');
+    }
+
+    protected function register(Request $request){
+        User::create([
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'user_type_id' => 2,
+            'password' => bcrypt($request->input('password')),
         ]);
     }
 }

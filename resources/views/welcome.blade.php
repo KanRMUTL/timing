@@ -8,7 +8,7 @@
             <h4>ตารางเวลา </h4>
             @if(auth()->check())
                 <span class="float-right">
-                    <a class="btn btn-sm btn-primary" style="color:aliceblue;" href="">ลงเวลา</a>
+                    <a class="btn btn-sm btn-primary" style="color:aliceblue;" href="/timing/create">ลงเวลา</a>
                 </span>
         </div>
         <div class="card-body">
@@ -27,22 +27,25 @@
                             <th>End</th>
                             <th>Manage</th>
                             <th>คำบ่น(ก่อนเข้างาน)</th>
-                            <th>คำบ่น(ก่อนออกงาน)</th>
                         </tr>
-                        @foreach ($out as $item_out)
 
 
-                        @foreach ($in as $item_in)
+
+                        @foreach ($timings as $timing)
                             <tr>
                                 <td></td>
-                                <td>{{ $item_in->user->name }}</td>
-                                <td>{{ $item_in->created_at }}</td>
-                                <td>{{ $item_in->created_at }}</td>
-                                <td>{{ $item_out->updated_at }}</td>
-                                <td>{{ $item_in->about }}</td>
-                                <td>{{ $item_out->about }}</td>
+                                <td>{{ $timing->user->name }}</td>
+                                <td>{{ $timing->created_at }}</td>
+                                @if($timing->created_at == $timing->updated_at)
+                                    <td>
+                                            <span class="badge badge-primary" style="font-size: 110%">ยังไม่ออกจากงาน</span>
+                                    </td>
+                                @else
+                                <td>{{ $timing->updated_at }}</td>
+                                @endif
+                                <td>{{ $timing->timing_type->name }}</td>
+                                <td>{{ $timing->about }}</td>
                             </tr>
-                        @endforeach
                         @endforeach
                 </table>
         </div>

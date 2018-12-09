@@ -13,8 +13,8 @@
 
 Route::get('/', 'HomeController@index');
 
-Route::get('/timing/create', 'TimingController@create');
-Route::post('/timing/store', 'TimingController@store');
+Route::get('/timing/create', 'TimingController@create')->middleware(['auth']);
+Route::post('/timing/store', 'TimingController@store')->middleware(['auth']);
 
 
 Route::get('/logout', function () {

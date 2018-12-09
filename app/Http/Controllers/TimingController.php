@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use \App\Timing;
 use Illuminate\Http\Request;
 use Auth;
 class TimingController extends Controller
@@ -27,14 +27,19 @@ class TimingController extends Controller
 
         //     $this->validate($request, $rules, $message);
 
-
-        \App\Timing::create([
-            'about' => $request->input('comment'),
-            'user_id' => Auth::user()->id,
-            'in_out' => $request->input('in_out'),
-            'timing_type_id' => $request->input('timing_type'),
-        ]);
-
+        if($request->input('in_out') == 1){
+            Timing::where('user_id', Auth::user()->id)
+            ->update([
+                'in_out' => $request->input('in_out')
+            ]);
+        }else{
+            \App\Timing::create([
+                'about' => $request->input('comment'),
+                'user_id' => Auth::user()->id,
+                'in_out' => $request->input('in_out'),
+                'timing_type_id' => $request->input('timing_type'),
+            ]);
+        }
         return redirect('/');
     }
 }
