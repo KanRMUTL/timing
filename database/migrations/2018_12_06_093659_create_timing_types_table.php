@@ -15,6 +15,7 @@ class CreateTimingTypesTable extends Migration
     {
         Schema::create('timing_types', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->timestamps();
         });
     }
