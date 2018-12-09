@@ -26,7 +26,24 @@
                             <th>Start</th>
                             <th>End</th>
                             <th>Manage</th>
+                            <th>คำบ่น(ก่อนเข้างาน)</th>
+                            <th>คำบ่น(ก่อนออกงาน)</th>
                         </tr>
+                        @foreach ($out as $item_out)
+
+
+                        @foreach ($in as $item_in)
+                            <tr>
+                                <td></td>
+                                <td>{{ $item_in->user->name }}</td>
+                                <td>{{ $item_in->created_at }}</td>
+                                <td>{{ $item_in->created_at }}</td>
+                                <td>{{ $item_out->updated_at }}</td>
+                                <td>{{ $item_in->about }}</td>
+                                <td>{{ $item_out->about }}</td>
+                            </tr>
+                        @endforeach
+                        @endforeach
                 </table>
         </div>
     </div>

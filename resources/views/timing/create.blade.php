@@ -21,6 +21,20 @@
 @endif
                <form method="POST" action="/timing/store">
                     {{ csrf_field() }}
+               <input type="hidden" value="{{ auth()->user()->id }}" name="user_id">
+                    <div class="form-group">
+                        <select name="timing_type" class="form-control">
+                            @foreach ($timing_types as $item)
+                                <option value="{{ $item->id }}"> {{ $item->name }} </option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                            <select name="in_out" class="form-control">
+                                    <option value="0">เข้างาน</option>
+                                    <option value="1">ออกงาน</option>
+                            </select>
+                        </div>
                     <div class="form-group">
                         <label for="inputComment">หมายเหตุ</label>
                         <input type="text" name="comment" class="form-control">

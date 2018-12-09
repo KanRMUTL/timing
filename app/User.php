@@ -31,4 +31,9 @@ class User extends Authenticatable
     {
         return $this->belongsTo(\App\UserType::class);
     }
+
+    public function timings()
+    {
+        return $this->hasMany(Timing::class);
+    }
 }

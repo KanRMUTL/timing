@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use Auth;
 class TimingController extends Controller
 {
     public function create()
@@ -27,5 +27,14 @@ class TimingController extends Controller
 
         //     $this->validate($request, $rules, $message);
 
+
+        \App\Timing::create([
+            'about' => $request->input('comment'),
+            'user_id' => Auth::user()->id,
+            'in_out' => $request->input('in_out'),
+            'timing_type_id' => $request->input('timing_type'),
+        ]);
+
+        return redirect('/');
     }
 }

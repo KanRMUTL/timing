@@ -15,6 +15,8 @@ Route::get('/', 'HomeController@index');
 
 Route::get('/timing/create', 'TimingController@create');
 Route::post('/timing/store', 'TimingController@store');
+
+
 Route::get('/logout', function () {
     Auth::logout();
     return redirect('/');
